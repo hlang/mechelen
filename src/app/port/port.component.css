@@ -1,0 +1,7 @@
+.port-ok {
+    color: darkgreen;
+}
+
+.port-failed {
+    color: red;
+}

@@ -1,0 +1,10 @@
+<div class="ui-g">
+    <div *ngFor="let machine of machines" class="ui-g-4">
+        <p-panel [header]="machine.name">
+            <div>
+                <app-machine [machineInfo]="machine"></app-machine>
+            </div>
+        </p-panel>
+    </div>
+</div>
+

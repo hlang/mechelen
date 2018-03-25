@@ -1,0 +1,8 @@
+<div class="ui-g">
+    <div class="ui-g-4">{{portInfo.portNum}}</div>
+    <div class="ui-g-4">{{portInfo.description}}</div>
+    <div class="ui-g-4">
+        <i *ngIf="portInfo.reachable" class="fa fa-check port-ok"></i>
+        <i *ngIf="portInfo.reachable" class="fa fa-exclamation-triangle port-failed"></i>
+    </div>
+</div>
