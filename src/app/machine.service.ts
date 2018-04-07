@@ -4,13 +4,13 @@ import {Observable} from "rxjs/Observable";
 import "rxjs/add/operator/map";
 
 export interface MachineInfo {
-    machineId: number;
+    id: number;
     name: string;
     description: string;
 }
 
 export interface PortInfo {
-    portId: number;
+    id: number;
     portNum: string;
     description: string;
     reachable: boolean;
@@ -26,7 +26,7 @@ export class MachineService {
     getMachines(): Observable<MachineInfo[]> {
         return this.http.get("/machines")
             .map(data => {
-                return data['machineInfos'];
+                return data['_embedded']['machines'];
             });
 
     }
@@ -34,7 +34,7 @@ export class MachineService {
     getPorts(machineId: number): Observable<PortInfo[]> {
         return this.http.get("/machines/" + machineId + "/ports")
             .map(data => {
-                return data['portInfos'];
+                return data['_embedded']['ports'];
             });
 
     }

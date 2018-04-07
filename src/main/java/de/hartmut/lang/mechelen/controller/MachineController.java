@@ -20,7 +20,7 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
  * hartmut on 24.03.18.
  */
 @RestController
-@RequestMapping("/machines")
+@RequestMapping("/machiners")
 public class MachineController {
     private final static Logger LOG = LoggerFactory.getLogger(MachineController.class);
 

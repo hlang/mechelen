@@ -15,7 +15,7 @@ export class MachineComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.machineService.getPorts(this.machineInfo.machineId)
+        this.machineService.getPorts(this.machineInfo.id)
             .subscribe(data => this.portInfos = data);
     }
 
