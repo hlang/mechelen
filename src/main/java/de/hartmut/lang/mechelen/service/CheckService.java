@@ -1,5 +1,6 @@
 package de.hartmut.lang.mechelen.service;
 
+import de.hartmut.lang.mechelen.MechelenProperties;
 import de.hartmut.lang.mechelen.db.Machine;
 import de.hartmut.lang.mechelen.db.MachineRepository;
 import de.hartmut.lang.mechelen.db.Port;
@@ -21,17 +22,19 @@ public class CheckService implements Runnable {
 
     private final MachineRepository machineRepository;
     private final PortRepository portRepository;
+    private final MechelenProperties properties;
     private final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
     private final ExecutorService executor = Executors.newFixedThreadPool(4);
 
-    public CheckService(MachineRepository machineRepository, PortRepository portRepository) {
+    public CheckService(MachineRepository machineRepository, PortRepository portRepository, MechelenProperties properties) {
         this.machineRepository = machineRepository;
         this.portRepository = portRepository;
+        this.properties = properties;
     }
 
     @PostConstruct
     public void init() {
-        scheduler.scheduleAtFixedRate(this, 5, 30, TimeUnit.SECONDS);
+        scheduler.scheduleAtFixedRate(this, 5, properties.getCheckDelay(), TimeUnit.SECONDS);
     }
 
     @Override
